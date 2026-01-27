@@ -1,0 +1,174 @@
+# In this new session we will learn about Git and GitHub and we will also learn how to install and work with it.
+
+# First we will understand what is Git and GitHub then we will move forward
+# Git is a distributed version control system used to track changes in source code, manage different versions of files, and allow multiple people to work on the same project without overwriting each other’s work.
+    In simple words:
+    Git keeps a history of your code and helps you manage changes safely.
+# GitHub is a cloud-based hosting platform that stores Git repositories online and provides tools for sharing code, collaboration, backup, and project management.
+    In simple words:
+    GitHub is a website where Git projects are stored and shared.
+
+# to install git bash go to website mentioned below and install and configure according to your operating system
+# https://git-scm.com/
+
+# now create a account in GitHub website and signup to your account the website link is mentioned below
+# https://github.com/
+
+# till now we understand what is Git and GitHub and how to download and setup, now lets do pratical 
+# we can use git in both cmd and git bash, but we will use git bash
+
+# this is the simple flow just keep in mind
+  -Working Directory → Staging Area → Local Repository → GitHub (Remote)
+
+# git --version
+  -this is used to check wether the git is properly installed or not, If the git is proplerly intalled then it will show the git version 
+
+# git config --global user.name "user_name"
+# git config --global user.email "user_emailID"
+  -the above both command is mandotary before performing any action If we don not set the user name and email ID we cannot commit, 
+  -now we can think why we need to set the user name and email id , it is done because if we commit git store who made the change when it is changed and what is changed your name and email become a part of commt history,
+  -now here --global is used to apply name and email to all repositories in your computer, you set It once not for every project,
+    -we can also set username and email like
+    # git config user.name "user_name"
+    # git config user.email "user_emailID"
+      -this applies for only for current project it is used for one github account for personal project and another for company work
+
+# git config --system --list
+  -it displays git configuration settings applied to all users on the system
+# git config --global --list
+  -it displays git configuration settings applied to the current users accross all repositories
+# git config --local --list
+  -it dispalys git configuration settings applied to the current repository only
+
+
+# now go to particular folder which you want to upload or turn into repository for that use cd command to navigate around directories
+# cd directory name
+# now once you are in the directory then move to next step mentioned below
+
+# git init
+  -it turns the folder into git repository.
+  -once the git init command is typed it initializes the folder as a Git repository by creating a .git directory, where git store all version control data and history
+  -the directory is hidden , to check that type ls -a command in the cmd
+
+# git status 
+  -it is used to display the current state of the working directory and the staging area in git repository
+  -once we enter the git status command we got the following information about the current state like branch , commit , tracked or untracked , and what all files are inside the repository
+   # On branch master
+     No commits yet
+     Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+          README.md
+          index.html
+          script.js
+          style.css
+     nothing added to commit but untracked files present (use "git add" to track)
+  -always run git status command
+    Before git add
+    After git add    
+    Before git commit
+    After git commit
+
+# git add 
+  -the git add command is used to move selected change from the working directory to the staging area(index) so they can be include in the next commit.
+  -so now we can get doubt that what does the staging area means, so we will try to understand it easily that staging area is also called as index , it is an intermediate layer in git where you prepare and review changes before you commit them to the repository
+  -to select all file use 
+    # git add . 
+  -to select a particular file use 
+    # git add filename.txt filename.html filename.js
+  -after we add the file to the staging area we got the below output
+    # On branch master
+      No commits yet
+      Changes to be committed:
+        (use "git rm --cached <file>..." to unstage)
+              new file:   README.md
+              new file:   index.html
+              new file:   script.js
+              new file:   style.css
+  -here we can see the changes that the file is moved to the staging area and is ready to next commit
+  -and at last we got a hint message which is (use "git rm --cached <file>..." to unstage) here it states that if you added any file by mistake you can remove that file from the staging area without deleting it
+
+# git commit -m "message"
+  -saves a permanent snapshot of the staged changes into the Git repository with a message
+  -in simple words git add select the file and git commit saves them
+  -the -m means message it is not compulsory to write message but it is mandatory to write a message which can be helpful later
+  -once the git commit command is entered it  takes files from the staging area and creates a snapshot and stores inside the .git/object directory
+  -Important points
+    Commits are permanent records
+    Git commits only what is staged
+    Unstaged files are ignored
+    Each commit represents a stable state
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# now we will assume that we changed some code in index.html after commit so we will see how to update 
+
+# git diff 
+  - this command shows old content, new content , and line by line difference
+
+# git add index.html
+  -here we are adding the file which we have modified not all file 
+
+# git commit -m "index.html is modified"
+  =here we are changing the content and creating a pemanent snapshot and storing inside the .git/object directory
+
+# git log
+  -it is used to view the commit history 
+  # git log --oneline
+    - this is used to print the commit history in short
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# skip the above for later continuation is here 
+# now to create repository go to GitHub.com and create new repository as steps given below
+    -Go to github.com
+    -Click New repository
+    -Repository name → same as your project folder (recommended)
+    -Do NOT add:
+      README
+      .gitignore
+      License
+    -Click Create repository
+# once you create a fresh repository you will get a URL which will look something like this  -  https://github.com/USERNAME/REPO_NAME.git
+# now copy the URL and come back to git bash
+
+# git remote add origin https://github.com/USERNAME/REPO_NAME.git
+  -It links your local git repository to a remote repository on GitHub
+  -can cannot your puch your code and cannot pull update wihtout this connection 
+  -git
+     Calls the Git program
+   remote
+     Tells Git you’re working with a remote repository
+     A remote repo = repository hosted somewhere else (GitHub, GitLab, etc.)
+   add
+     Means add a new remote connection
+   origin
+     This is just a name (alias) for the remote repository
+     Conventionally, the main remote is called origin
+     You could name it anything, but origin is standard
+
+# git remote -v
+  =it is used to view the remote repository linked to your local Git repository along with their URLs
+  -in simple words It tells where your code will be pushed to and pulled from 
+  -here -v = verbose which means it show both fetch and pull URLs
+  -when you run the git remote -v command you will get output like mentioned below 
+  -origin  https://github.com/USERNAME/REPO.git (fetch)
+   origin  https://github.com/USERNAME/REPO.git (push)
+  -here
+    origin → remote name
+    fetch → used when you pull or fetch code
+    push → used when you push code
+
+# git branch 
+  -this command is used to check in which branch you are 
+  -there are only two branches which are master and main 
+
+# git branch -m master main
+  -this command is used to change the branch from master to main and vice-versa
+  -here -m = move (rename)
+  -from the above command it states that change the branch from master to main 
+# git push -u origin main
+  -it uploades your local main branch commit to the GitHub repository and links the branches for future puches
+  -git push 
+    sends your local commit to remote repository  , without this GitHub never receives your code
+  - -u(--set-upstream) connects a local branch with its remote tracking branch for future push and pull commands.
+  - here origin is name of the remote repository, usually point to your GitHub repo URL
+  - here main is branch which you are pushing , this branch will created on GitHub if it doesn't exists.
+ 
+ ### SO HERE ENDS THE BASIC GIT AND GITHUB ADVANCE TOPICS WILL BE UPDATED SOON ###
