@@ -7,7 +7,19 @@
 # GitHub is a cloud-based hosting platform that stores Git repositories online and provides tools for sharing code, collaboration, backup, and project management.
     In simple words:
     GitHub is a website where Git projects are stored and shared.
+# git and GitHub both are different thing, but they work together to manage source code that's why both comes under Source Code Management(SVM)
+# there are other platforms like GitHub like GitLab and BitBucket all this platforms do the same thing, whatever we can use it depends upon our work but the main part is git which is the fundamental part which is used behind all this platforms
 
+==============================================================================================================================================================
+
+# before moving further we will understand what is the difference between directory and repository 
+
+1. DIRECTORY = it is just a standard folder on your computer that holds your files.
+
+2. REPOSITORY = it is a highly specialized tracking system that records the entire history of everything inside that folder
+                basically we can tell that repository is essentially an advance or smart directory, while a standard directory only know what your files look right now, but a repository acts as a time machine that keep a permenant record of the entire history and date of those files.
+
+==============================================================================================================================================================
 # to install git bash go to website mentioned below and install and configure according to your operating system
 # https://git-scm.com/
 
@@ -45,8 +57,10 @@
 # cd directory name
 # now once you are in the directory then move to next step mentioned below
 
+==============================================================================================================================================================
+
 # git init
-  -it turns the folder into git repository.
+  -it turns the folder into git repository.which means it is used to initialize a new Git repository
   -once the git init command is typed it initializes the folder as a Git repository by creating a .git directory, where git store all version control data and history
   -the directory is hidden , to check that type ls -a command in the cmd
 
@@ -68,6 +82,8 @@
     Before git commit
     After git commit
 
+==============================================================================================================================================================
+
 # git add 
   -the git add command is used to move selected change from the working directory to the staging area(index) so they can be include in the next commit.
   -so now we can get doubt that what does the staging area means, so we will try to understand it easily that staging area is also called as index , it is an intermediate layer in git where you prepare and review changes before you commit them to the repository
@@ -86,10 +102,28 @@
               new file:   style.css
   -here we can see the changes that the file is moved to the staging area and is ready to next commit
   -and at last we got a hint message which is (use "git rm --cached <file>..." to unstage) here it states that if you added any file by mistake you can remove that file from the staging area without deleting it
+  
+==============================================================================================================================================================  
 
-# git commit -m "message"
+# once we moved the file to the staging are we got two options either we can commit the file which means we can move the file to tracked area OR we can bring it back to untrack area which means unstaging
+   
+   git rm --cached filename.txt
+   -this command is used to unstage a single file
+   
+   git rm --cached filename -r .
+   -this command is  used to unstage all the file in the directory
+   
+   here - git rm = by default this command deletes files from your both your git repository and actual computer drive 
+        - --cached = this flag is saftey net. this tell git to only remove the files from git's tracking index(staging area). it ensures your actual file on your computer are not deleted.
+		- -r = this stands for "recursive". it allows the git to look inside the currect folder and apply the command to every single file and subfolder inside it.
+		- . = this represents the current directory(the folder your are currently in your directory)
+  
+===============================================================================================================================================================
+
+# now instead of untracking if we want to move the file to tracked area. so we will below command
+  git commit -m "message"
   -saves a permanent snapshot of the staged changes into the Git repository with a message
-  -in simple words git add select the file and git commit saves them
+  -in simple words 'git add select the file' and 'git commit saves them'
   -the -m means message it is not compulsory to write message but it is mandatory to write a message which can be helpful later
   -once the git commit command is entered it  takes files from the staging area and creates a snapshot and stores inside the .git/object directory
   -Important points
@@ -97,6 +131,40 @@
     Git commits only what is staged
     Unstaged files are ignored
     Each commit represents a stable state
+	
+===============================================================================================================================================================
+
+# now we wil see how to restore a deleted file after commit 
+
+# now if we delete a file for example :
+  rm index.html
+    then 
+  git status
+    -we will get a message
+	  On branch master
+      Changes not staged for commit:
+         (use "git add/rm <file>..." to update what will be committed)
+         (use "git restore <file>..." to discard changes in working directory)
+                 deleted:    dummy.py
+
+         no changes added to commit (use "git add" and/or "git commit -a")
+	-here we can see that the file is deleted from the system, but now because we are using the version control system we can restore the file back.
+  
+# git restore filename.txt
+    when we enter git commit, git looks into your last commit, finds the missing file, and copies it back to your folder.
+   
+===============================================================================================================================================================
+
+# flow chart till now what we have learned
+
+[ Working Directory / untracked] -> (Modify files)
+        │
+        ▼  git add <filename>
+[ Staging Area ]      -> (Prepare snapshot)
+        │
+        ▼  git commit -m "your message"
+[ Local Repository / tracked]  -> (Permanently save to history)
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # now we will assume that we changed some code in index.html after commit so we will see how to update 
