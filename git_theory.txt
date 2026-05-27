@@ -35,9 +35,11 @@
 # git --version
   -this is used to check wether the git is properly installed or not, If the git is proplerly intalled then it will show the git version 
 
+==============================================================================================================================================================
+
 # git config --global user.name "user_name"
 # git config --global user.email "user_emailID"
-  -the above both command is mandotary before performing any action If we don not set the user name and email ID we cannot commit, 
+  -the above both command is mandotary before performing any action If we do not set the user name and email ID we cannot commit, 
   -now we can think why we need to set the user name and email id , it is done because if we commit git store who made the change when it is changed and what is changed your name and email become a part of commt history,
   -now here --global is used to apply name and email to all repositories in your computer, you set It once not for every project,
     -we can also set username and email like
@@ -165,25 +167,12 @@
         ▼  git commit -m "your message"
 [ Local Repository / tracked]  -> (Permanently save to history)
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# now we will assume that we changed some code in index.html after commit so we will see how to update 
+===============================================================================================================================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# git diff 
-  - this command shows old content, new content , and line by line difference
+# Till now we have worked within our local repository using git , now we will connect this local repository with remote GitHub repository 
 
-# git add index.html
-  -here we are adding the file which we have modified not all file 
-
-# git commit -m "index.html is modified"
-  =here we are changing the content and creating a pemanent snapshot and storing inside the .git/object directory
-
-# git log
-  -it is used to view the commit history 
-  # git log --oneline
-    - this is used to print the commit history in short
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# skip the above for later continuation is here 
 # now to create repository go to GitHub.com and create new repository as steps given below
     -Go to github.com
     -Click New repository
@@ -196,9 +185,12 @@
 # once you create a fresh repository you will get a URL which will look something like this  -  https://github.com/USERNAME/REPO_NAME.git
 # now copy the URL and come back to git bash
 
+===============================================================================================================================================================
+
 # git remote add origin https://github.com/USERNAME/REPO_NAME.git
   -It links your local git repository to a remote repository on GitHub
   -can cannot your puch your code and cannot pull update wihtout this connection 
+  - This command is used when you create a new project. It creates a bridge between your local computer and remote repository like GitHub, GitLab, Bitbucket. after you run this command you can share your work with others
   -git
      Calls the Git program
    remote
@@ -223,6 +215,8 @@
     fetch → used when you pull or fetch code
     push → used when you push code
 
+===============================================================================================================================================================
+
 # git branch 
   -this command is used to check in which branch you are 
   -there are only two branches which are master and main 
@@ -239,4 +233,28 @@
   - here origin is name of the remote repository, usually point to your GitHub repo URL
   - here main is branch which you are pushing , this branch will created on GitHub if it doesn't exists.
  
- ### SO HERE ENDS THE BASIC GIT AND GITHUB ADVANCE TOPICS WILL BE UPDATED SOON ###
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# now we will assume that we changed some code in index.html after commit so we will see how to update 
+
+# git diff 
+  - this command shows old content, new content , and line by line difference
+
+# git add index.html
+  -here we are adding the file which we have modified not all file 
+
+# git commit -m "index.html is modified"
+  =here we are changing the content and creating a pemanent snapshot and storing inside the .git/object directory
+
+# git log
+  -it is used to view the commit history 
+  # git log --oneline
+    - this is used to print the commit history in short
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
