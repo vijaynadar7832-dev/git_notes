@@ -215,6 +215,18 @@
     fetch → used when you pull or fetch code
     push → used when you push code
 
+# imagine you already set the repository url using the "git remote add origin <repo_url>"now you want to change the repository url, for to solve the problem we use the below command, which will help your local repository to talk to new remote repository
+# git remote set-url origin <new_url>
+  - this command is used to update and existing remote repository connection in your local git project
+  - It is most commonly used when a repository has been moved to a new hosting service (like moving from Bitbucket to GitHub)
+  -here:
+     - git remote = it is the base command for managing the set of remote repositories tracked by your local project.
+	 - set-url = the specific sub-commands that tells git you want to change the url of an existing remote rather than adding new one
+	 - origin = this is the default name for your main online repository
+	 - <new_url> = this the new repository url or SSH 
+   
+   - once you change the repository url don't forget to enter the "get push -u origin main
+
 ===============================================================================================================================================================
 
 # git branch 
@@ -241,11 +253,33 @@
 # when you enter "git push -u origin main" command first time you will get a pop-up message of GitHub connect 
 # here you get two options to connect your local repository to remote repository, let's see the two method
 
-1. 
+1. we you enter the "git push -u origin main" command by default you get a pop up 
+   - the pop will have two options sign in with your browser or sign in with a code you can select any one of that
+   - if you select sign in with your browser you will be redirected to a browser an the github will connect to the local repository
+   - if you select sign in with a code you will get a code which you then will be redirected browser and then you will need to enter the code in the given field, once you enter the 8 digit code your github will be connected to local repo
+2. personal access token
+   - if you want to not go through the pop up method this method is for you 
+   - first go github and sign in to your account
+   - go to setting, in setting scroll down to last, at left side you will see "<> Developer Settings" something like this which is developer setting, click on the developer settings
+   - inside developer settings, at the left side you will see "personal access tokens"
+   - inside the personal access tokens you will get two options "1.Fine-Grained tokens" and "2.Token(classic)"
+   - click on second option which is "Token(classic)"
+   - now in middle of thee page you will get a option "Generate new token" click on the option, here you see two options "1.Generate new token" and "2.Generate new token (classic)
+   - click on the second option which is "Generate new token (classic)"
+   - now first enter a token name you can give what ever you want example:- "git_tutorial.txt_token"
+   - now in expiration date choose according to your options, if you select a particular date, after the date your local repo will be disconnected from the remote repo
+   - then in select scope option only select the "repo" option which contains more five options 
+   - then scroll down to the bottom of the page you will see a "Generate token" button, click the button your token will be generated.
+   - once you generate token you will get a token copy the token
+   - now go to git and enter the following given command 
+   - "git remote set-url origin https://<token_id>@<repo_url>
+   - in the above command in the place of the <token_id> you will enter the copied token and in the <repo_url> you will enter the repository url which you have created in the github
+   - I already elaborated the command details, so scroll up to see the details 
  
- 
- 
- 
+# once you set you repository for next time you don't need to enter "git push -u origin main" 
+  -from second time only enter "git push" it will automatically push the code in the remote repository
+  
+  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # now we will assume that we changed some code in index.html after commit so we will see how to update 
