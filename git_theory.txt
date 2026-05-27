@@ -225,6 +225,9 @@
   -this command is used to change the branch from master to main and vice-versa
   -here -m = move (rename)
   -from the above command it states that change the branch from master to main 
+
+===============================================================================================================================================================
+
 # git push -u origin main
   -it uploades your local main branch commit to the GitHub repository and links the branches for future puches
   -git push 
@@ -233,9 +236,12 @@
   - here origin is name of the remote repository, usually point to your GitHub repo URL
   - here main is branch which you are pushing , this branch will created on GitHub if it doesn't exists.
  
+===============================================================================================================================================================
  
- 
- 
+# when you enter "git push -u origin main" command first time you will get a pop-up message of GitHub connect 
+# here you get two options to connect your local repository to remote repository, let's see the two method
+
+1. 
  
  
  
